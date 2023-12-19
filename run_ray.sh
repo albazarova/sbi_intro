@@ -73,6 +73,8 @@ done
 
 #python -u simple-trainer.py "$SLURM_CPUS_PER_TASK"
 export SRUN_CPUS_PER_TASK="$SLURM_CPUS_PER_TASK"
-#srun 
+#srun
+
+###your python script goes here
 python run_sbi_joblib.py
 #python -u  joblib_example.py "$SLURM_CPUS_PER_TASK"
