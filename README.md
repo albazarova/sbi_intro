@@ -9,3 +9,19 @@ https://github.com/sbi-dev/sbi/tree/main/tutorials
 https://github.com/mlcolab/sbi-workshop/tree/main/slides
 
 https://github.com/CamDavidsonPilon/Probabilistic-Programming-and-Bayesian-Methods-for-Hackers
+
+
+Useful references:
+
+The frontier of simulation-based inference, Kyle Cranmer, Johann Brehmer, and Gilles Louppe, PNAS 117 (48) 30055-30062 https://doi.org/10.1073/pnas.191278911
+
+Fast ε-free Inference of Simulation Models with Bayesian Conditional Density Estimation, George Papamakarios, Iain Murray, NeurIPS 2016, https://proceedings.neurips.cc/paper_files/paper/2016/file/6aca97005c68f1206823815f66102863-Paper.pdf
+
+Sequential neural likelihood: Fast likelihood-free inference with autoregressive flows, George Papamakarios, David C. Sterratt, Iain Murray, http://proceedings.mlr.press/v89/papamakarios19a/papamakarios19a.pdf
+
+Likelihood-free MCMC with Amortized Approximate Likelihood Ratios, Joeri Hermans, Volodimir Begy, Gilles Louppe Proceedings of the 37th International Conference on Machine Learning http://proceedings.mlr.press/v119/hermans20a.html
+
+
+
+
+
