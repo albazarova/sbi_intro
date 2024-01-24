@@ -1,0 +1,1 @@
+pip install -U "ray[all]==2.9.0"

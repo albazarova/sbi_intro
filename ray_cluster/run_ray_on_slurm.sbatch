@@ -1,23 +1,18 @@
 #!/bin/bash
-# shellcheck disable=SC2206
-#SBATCH --account=atmlaml
-#SBATCH --job-name=test
+#SBATCH --account=YOUR_ACCOUNT
+#SBATCH --nodes=2
 #SBATCH --ntasks-per-node=1
-#SBATCH --cpus-per-task=96
-#SBATCH --nodes=1
-#SBATCH --time=00:30:00
+#SBATCH --cpus-per-task=48
+#SBATCH --time=00:5:00
 #SBATCH --gres=gpu:4
-#SBATCH --output=slurms/gpu-out.%j
-#SBATCH --error=slurms/gpu-err.%j
 #SBATCH --partition=develbooster
-set -x
-
 
 export NCCL_SOCKET_IFNAME="ib0"
-SLURM_GPUS_PER_TASK=0
+export SRUN_CPUS_PER_TASK="$SLURM_CPUS_PER_TASK"
+SLURM_GPUS_PER_TASK=4
 
-
-source /p/project/atmlaml/bazarova1/memiliflow/sc_venv_template/activate.sh
+# activate the necessary virtual environment here
+source ./ray_env/activate.sh 
 
 
 # __doc_head_address_start__
@@ -43,7 +38,7 @@ fi
 # __doc_head_address_end__
 
 # __doc_head_ray_start__
-port=6379
+port=7010
 ip_head=$head_node_ip:$port
 export ip_head
 echo "IP Head: $ip_head"
@@ -57,6 +52,8 @@ srun --nodes=1 --ntasks=1 -w "$head_node" \
 # __doc_worker_ray_start__
 # optional, though may be useful in certain versions of Ray < 1.0.
 sleep 10
+
+echo "------------------------------------"
 
 # number of nodes other than the head node
 worker_num=$((SLURM_JOB_NUM_NODES - 1))
@@ -73,11 +70,4 @@ done
 
 # __doc_script_start__
 # ray/doc/source/cluster/doc_code/simple-trainer.py
-
-#python -u simple-trainer.py "$SLURM_CPUS_PER_TASK"
-export SRUN_CPUS_PER_TASK="$SLURM_CPUS_PER_TASK"
-#srun
-
-###your python script goes here
-python run_sbi_joblib.py
-#python -u  joblib_example.py "$SLURM_CPUS_PER_TASK"
+python -u ray_joblib.py
