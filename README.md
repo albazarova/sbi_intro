@@ -1,4 +1,4 @@
-# sbi_intro
+# Introductio to SBI
 ### Tutorial on Simulation Based Inference
 
 
@@ -20,6 +20,12 @@ Fast ε-free Inference of Simulation Models with Bayesian Conditional Density Es
 Sequential neural likelihood: Fast likelihood-free inference with autoregressive flows, George Papamakarios, David C. Sterratt, Iain Murray, http://proceedings.mlr.press/v89/papamakarios19a/papamakarios19a.pdf
 
 Likelihood-free MCMC with Amortized Approximate Likelihood Ratios, Joeri Hermans, Volodimir Begy, Gilles Louppe Proceedings of the 37th International Conference on Machine Learning http://proceedings.mlr.press/v119/hermans20a.html
+
+### Working with ray cluster
+
+An example of how to submit jobs with ray backend is available withing the folder `ray_cluster`
+
+Use `source ray_env/activate.sh` to activate the corresponding environment. Then use the batch script `run_ray_on_slurm.sbatch` in order to submit an example script `ray_joblib.py`
 
 
 
