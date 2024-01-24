@@ -1,4 +1,4 @@
-# Introductio to SBI
+# Introduction to SBI
 ### Tutorial on Simulation Based Inference
 
 
