@@ -12,7 +12,10 @@
 #SBATCH --partition=develbooster
 set -x
 
+
+export NCCL_SOCKET_IFNAME="ib0"
 SLURM_GPUS_PER_TASK=0
+
 
 source /p/project/atmlaml/bazarova1/memiliflow/sc_venv_template/activate.sh
 
