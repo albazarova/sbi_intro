@@ -1,5 +1,0 @@
-The activation script must be sourced, otherwise the virtual environment will not work.
-Setting vars
-IP Head: 10.80.97.57:6379
-Starting HEAD at jsfc017
-------------------------------------
