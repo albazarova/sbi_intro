@@ -26,7 +26,8 @@ export SRUN_CPUS_PER_TASK="$SLURM_CPUS_PER_TASK"
 
 #source /p/project/atmlaml/bazarova1/memiliflow/sc_venv_template/activate.sh
 #source /p/project/loki/bazarova1/sc_venv_memilio/activate.sh
-source /p/project/training2405/sc_venv_sbi/activate.sh
+#source /p/project/training2405/sc_venv_sbi/activate.sh
+source /p/project/training2405/sc_venv_sbi_local/activate.sh
 
 # __doc_head_address_start__
 #export SRUN_CPUS_PER_TASK="$SLURM_CPUS_PER_TASK"

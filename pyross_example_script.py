@@ -9,7 +9,7 @@ from matplotlib import pyplot as plt
 from datetime import date
 import pandas as pd
 import multiprocessing
-from sbi.inference import SNPE, SNRE, prepare_for_sbi, simulate_for_sbi
+from sbi.inference import SNPE, simulate_for_sbi #, SNRE, prepare_for_sbi
 import os 
 
 
