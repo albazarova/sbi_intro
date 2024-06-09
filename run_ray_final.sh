@@ -1,34 +1,27 @@
 #!/bin/bash
-#SBATCH --account=training2405
 #SBATCH --nodes=2
-##SBATCH --exclusive
+#SBATCH --exclusive
 #SBATCH --ntasks-per-node=1
-#SBATCH --cpus-per-task=96
+#SBATCH --cpus-per-task=36
 #SBATCH --time=0:30:00
-#SBATCH --partition=gpus
+#SBATCH --partition=milan
+#SBATCH --reservation=sbi2
 #SBATCH --output=outputs/%j.out
 #SBATCH --error=outputs/%j.err
+##SBATCH --mem-per-cpu=5GB
+#SBATCH --mem=995G  
+#
 
 set -x
-#export CUDA_VISIBLE_DEVICES=0,1,2,3
 export NCCL_SOCKET_IFNAME="ib0"
 export SRUN_CPUS_PER_TASK="$SLURM_CPUS_PER_TASK"
-# # so processes know who to talk to
-# MASTER_ADDR="$(scontrol show hostnames "$SLURM_JOB_NODELIST" | head -n 1)"
-# # Allow communication over InfiniBand cells.
-# MASTER_ADDR="${MASTER_ADDR}i"
-# # Get IP for hostname.
-# export MASTER_ADDR="$(nslookup "$MASTER_ADDR" | grep -oP '(?<=Address: ).*')"
-# export MASTER_PORT=7010
-# export GPUS_PER_NODE=4
 
-#export SLURM_GPUS_PER_TASK=4
 
-#source /p/project/atmlaml/bazarova1/memiliflow/sc_venv_template/activate.sh
-#source /p/project/loki/bazarova1/sc_venv_memilio/activate.sh
-#source /p/project/training2405/sc_venv_sbi/activate.sh
-source /p/project/training2405/sc_venv_sbi_local/activate.sh
 
+module load python/3.10.4-env_sbi-git
+
+module load gcc/10.2.0 openmpi/4.1.1
+export OMP_NUM_THREADS=1; OPENBLAS_NUM_THREADS=1
 # __doc_head_address_start__
 #export SRUN_CPUS_PER_TASK="$SLURM_CPUS_PER_TASK"
 # Getting the node names
@@ -66,7 +59,8 @@ srun --nodes=1 --ntasks=1 -w "$head_node" \
 
 # __doc_worker_ray_start__
 # optional, though may be useful in certain versions of Ray < 1.0.
-sleep 10
+
+sleep 60
 
 echo "------------------------------------"
 
@@ -82,17 +76,10 @@ for ((i = 1; i <= worker_num; i++)); do
     srun --nodes=1 --ntasks=1 -w "$node_i" \
         ray start --address "$ip_head" \
         --num-cpus "${SLURM_CPUS_PER_TASK}"  --block &
-    sleep 5
+    sleep 20
 done
 # __doc_worker_ray_end__
 
 # __doc_script_start__
-# ray/doc/source/cluster/doc_code/simple-trainer.py
-#python -u simple-trainer.py "$SLURM_CPUS_PER_TASK"
-#export SRUN_CPUS_PER_TASK="$SLURM_CPUS_PER_TASK"
 
-#srun --overlap 
-#python -u run_sbi_joblib1.py
-python -u pyross_example_script_ju.py
-#python -u run_sbi_multinode.py
-#python -u simple-trainer-2.py
+python -u pyross_example_script.py
