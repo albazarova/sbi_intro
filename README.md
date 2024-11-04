@@ -23,9 +23,9 @@ Likelihood-free MCMC with Amortized Approximate Likelihood Ratios, Joeri Hermans
 
 ### Working with ray cluster
 
-An example of how to submit jobs with ray backend for distributed training is available withing the folder `ray_cluster`.
+An example of how to submit jobs on the development partition of Juwels booster (JSC) with ray backend for distributed training is available withing the folder `ray_cluster`. You will need a judoor account for this.
 
-If it is the first time you are using this repo, use `source ray_env/setup.sh` to create the required python environment.
+If it is the first time you are using this repo on the cluster, use `source ray_env/setup.sh` to create the required python environment.
 
 Afterwards, use `source ray_env/activate.sh` to activate the corresponding environment. Then use the batch script `run_ray_on_slurm.sbatch` in order to submit an example script `ray_joblib.py`
 
