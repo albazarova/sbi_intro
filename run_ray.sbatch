@@ -1,30 +1,23 @@
 #!/bin/bash
+#SBATCH --account=atmlaml
 #SBATCH --nodes=2
-#SBATCH --exclusive
 #SBATCH --ntasks-per-node=1
-#SBATCH --cpus-per-task=36
-#SBATCH --time=0:30:00
-#SBATCH --partition=milan
-#SBATCH --reservation=sbi2
+#SBATCH --cpus-per-task=40
+#SBATCH --time=00:30:00
+#SBATCH --partition=gpus
+#SBATCH --gres=gpu:4
 #SBATCH --output=outputs/%j.out
 #SBATCH --error=outputs/%j.err
-##SBATCH --mem-per-cpu=5GB
-#SBATCH --mem=995G  
-#
 
-set -x
 export NCCL_SOCKET_IFNAME="ib0"
 export SRUN_CPUS_PER_TASK="$SLURM_CPUS_PER_TASK"
 
+source ./ray_cluster/ray_env/activate.sh
 
+export OMP_NUM_THREADS=1
+export OPENBLAS_NUM_THREADS=1
+export SLURM_GPUS_PER_TASK=4
 
-module load python/3.10.4-env_sbi-git
-
-module load gcc/10.2.0 openmpi/4.1.1
-export OMP_NUM_THREADS=1; OPENBLAS_NUM_THREADS=1
-# __doc_head_address_start__
-#export SRUN_CPUS_PER_TASK="$SLURM_CPUS_PER_TASK"
-# Getting the node names
 nodes=$(scontrol show hostnames "$SLURM_JOB_NODELIST")
 nodes_array=($nodes)
 
@@ -42,33 +35,24 @@ else
 fi
 echo "IPV6 address detected. We split the IPV4 address as $head_node_ip"
 fi
-# __doc_head_address_end__
 
-# __doc_head_ray_start__
-#port=7010
+echo $nodes
+
 port=6379
 ip_head=$head_node_ip:$port
 export ip_head
 echo "IP Head: $ip_head"
 
+# Initialize head
 echo "Starting HEAD at $head_node"
 srun --nodes=1 --ntasks=1 -w "$head_node" \
     ray start --head --node-ip-address="$head_node_ip" --port=$port \
     --num-cpus "${SLURM_CPUS_PER_TASK}"  --block &
-# __doc_head_ray_end__
-
-# __doc_worker_ray_start__
-# optional, though may be useful in certain versions of Ray < 1.0.
-
-sleep 60
-
+sleep 40
 echo "------------------------------------"
 
-# number of nodes other than the head node
+# Initialize all of the workers
 worker_num=$((SLURM_JOB_NUM_NODES - 1))
-
-#export SRUN_CPUS_PER_TASK="$SLURM_CPUS_PER_TASK"
-
 for ((i = 1; i <= worker_num; i++)); do
     #export SRUN_CPUS_PER_TASK="$SLURM_CPUS_PER_TASK"
     node_i=${nodes_array[$i]}
@@ -78,8 +62,6 @@ for ((i = 1; i <= worker_num; i++)); do
         --num-cpus "${SLURM_CPUS_PER_TASK}"  --block &
     sleep 20
 done
-# __doc_worker_ray_end__
-
-# __doc_script_start__
 
 python -u pyross_example_script.py
+echo Finished
