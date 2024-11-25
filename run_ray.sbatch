@@ -1,10 +1,10 @@
 #!/bin/bash
-#SBATCH --account=atmlaml
+#SBATCH --account=YOUR_ACCOUNT
 #SBATCH --nodes=2
 #SBATCH --ntasks-per-node=1
 #SBATCH --cpus-per-task=40
 #SBATCH --time=00:30:00
-#SBATCH --partition=gpus
+#SBATCH --partition=develgpus
 #SBATCH --gres=gpu:4
 #SBATCH --output=outputs/%j.out
 #SBATCH --error=outputs/%j.err
@@ -12,7 +12,11 @@
 export NCCL_SOCKET_IFNAME="ib0"
 export SRUN_CPUS_PER_TASK="$SLURM_CPUS_PER_TASK"
 
-source ./ray_cluster/ray_env/activate.sh
+# --- Note:
+# Remember to run setup.sh in the ray_cluster folder once before this file.  
+# It will generate the environment that will be acticvated with the following line.
+# ---
+source ./ray_cluster/activate.sh
 
 export OMP_NUM_THREADS=1
 export OPENBLAS_NUM_THREADS=1
@@ -64,4 +68,4 @@ for ((i = 1; i <= worker_num; i++)); do
 done
 
 python -u pyross_example_script.py
-echo Finished
+echo -e "\nFinished"
