@@ -23,9 +23,11 @@ Likelihood-free MCMC with Amortized Approximate Likelihood Ratios, Joeri Hermans
 
 ### Working with ray cluster
 
-An example of how to submit jobs with ray backend for distributed training is available withing the folder `ray_cluster`
+An example of how to submit jobs on a JSC cluster (JSC) using with ray backend for distributed simulation and training can be found in the `run_ray.sbatch` script. There is a virtual environment prepared to run on JSC clusters in the `ray_cluster` folder. You will need a judoor account for this.
 
-Use `source ray_env/activate.sh` to activate the corresponding environment. Then use the batch script `run_ray_on_slurm.sbatch` in order to submit an example script `ray_joblib.py`
+If it is the first time you are using this repo on the cluster, head to the `ray_cluster` folder (`$cd ray_cluster`) and run `bash setup.sh` to create the required python environment.
+
+Afterwards, use `source ray_cluster/activate.sh` to activate the corresponding environment. Then use the batch script `run_ray.sbatch` in order to submit a job to run `pyross_example_script.py`
 
 
 

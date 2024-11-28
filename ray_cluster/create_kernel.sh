@@ -21,7 +21,7 @@ hostname=$(hostname)
 if [[ $hostname == *"login"* ]]; then
    exec python -m ipykernel "$@"
 else
-   srun python -m ipykernel "$@"
+   python -m ipykernel "$@"
 fi
 ' > "${KERNELFILE}"
 
