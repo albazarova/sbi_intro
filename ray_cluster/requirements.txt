@@ -3,8 +3,5 @@ pyross
 sdeint
 pymc
 pandas
-numpy
-matplotlib
-#ipywidgets
-scikit-learn
 ray[all]==2.9.0
+joblib==1.4.2
