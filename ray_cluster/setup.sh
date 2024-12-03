@@ -12,5 +12,5 @@ python -m venv --prompt "$ENV_NAME" --system-site-packages "${ENV_DIR}"
 
 source "${ABSOLUTE_PATH}"/activate.sh
 
-python -m pip install --upgrade -r "${ABSOLUTE_PATH}"/requirements.txt
+python -m pip install --upgrade --force-reinstall --no-cache-dir -r "${ABSOLUTE_PATH}"/requirements.txt
 
