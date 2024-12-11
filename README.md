@@ -1,7 +1,10 @@
 # Introduction to Simulation Based Inference: enhancing synthetic models with Artificial Intelligence
-### Welcome to the tutorial on Simulation Based Inference with HPCs
+### :high_brightness: Welcome to the tutorial on Simulation Based Inference with HPCs
 
-This is a Simulation Based Inference (SBI) tutorial which is based on the python package [sbi](https://github.com/sbi-dev/sbi) extended with a patch to be distributed accross multiple High Performance Computing (HPC) nodes. It uses a number of toy data/model examples, as well as simplified examples of real-life problems taken from the authors'research. 
+### Organizers
+[Alina Bazarova](https://www.fz-juelich.de/profile/bazarova_al), [Jose Robledo](https://www.fz-juelich.de/profile/robledo_j), and [Stefan Kesselheim](https://www.google.com/search?client=ubuntu-sn&channel=fs&q=stefan+Kesselheim)
+
+**Description** This is a Simulation Based Inference (SBI) tutorial which is based on the python package [sbi](https://github.com/sbi-dev/sbi) extended with a patch to be distributed accross multiple High Performance Computing (HPC) nodes. It uses a number of toy data/model examples, as well as simplified examples of real-life problems taken from the authors'research. 
 
 You may find the tutorial notebooks in the [notebooks](./notebooks) folder. This course is intended for half a day (4 hours), where we introduce the SBI methodology and how to implement it by means of the [`sbi` package](https://github.com/sbi-dev/sbi) in HPC clusters. We provide an example multi node execution in the  [multi_node_ray](./multi_node_ray/) folder.
 
