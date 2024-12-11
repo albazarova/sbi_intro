@@ -16,7 +16,7 @@ export SRUN_CPUS_PER_TASK="$SLURM_CPUS_PER_TASK"
 # Remember to run setup.sh in the ray_cluster folder once before this file.  
 # It will generate the environment that will be acticvated with the following line.
 # ---
-source ./ray_cluster/activate.sh
+source ../sbi_env/activate.sh
 
 export OMP_NUM_THREADS=1
 export OPENBLAS_NUM_THREADS=1
