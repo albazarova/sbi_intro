@@ -1,6 +1,7 @@
-# Introduction to SBI (and Scaling!)
+# Introduction to Simulation Based Inference: enhancing synthetic models with Artificial Intelligence
 ### Tutorial on Simulation Based Inference
 
+This is a Simulation Based Inference (SBI) tutorial which is based on the python package [sbi](https://github.com/sbi-dev/sbi) extended with a patch to be distributed accross multiple HPC nodes. It uses a number of toy data/model examples, as well as simplified examples of real-life problems taken from the authors'research 
 
 Material of this tutorial partly uses the examples from the repositories listed below:
 
