@@ -2,7 +2,7 @@
 ### Tutorial on Simulation Based Inference
 
 
-Material of this tutorial was largely built using the examples from the repositories listed below:
+Material of this tutorial partly uses the examples from the repositories listed below:
 
 https://github.com/sbi-dev/sbi/tree/main/tutorials
 
