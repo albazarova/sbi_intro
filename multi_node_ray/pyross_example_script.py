@@ -270,7 +270,7 @@ if x != None:
         diag="kde",
     )
 
-    fig.savefig("pairplot_71_" + str(num_sims) + "_MSE_joblib.png")
+    fig.savefig("figures/pairplot_71_" + str(num_sims) + "_MSE_joblib.png")
 
     observation = simulator2(
         torch.unsqueeze(torch.mean(theta_p.detach().cpu(), axis=0), 0)
@@ -301,7 +301,7 @@ if x != None:
         diag="kde",
     )
 
-    fig1.savefig("pairplot_71_" + str(num_sims) + "_no_MSE_joblib.png")
+    fig1.savefig("figures/pairplot_71_" + str(num_sims) + "_no_MSE_joblib.png")
 
     fig, ax = plt.subplots()
 
@@ -313,4 +313,4 @@ if x != None:
     first_legend = ax.legend(handles=[line1, line2, line3], loc="lower right")
 
     ax.add_artist(first_legend)
-    plt.savefig("sim_vs_RKI_71_" + str(num_sims) + "_no_MSE_joblib.png")
+    plt.savefig("figures/sim_vs_RKI_71_" + str(num_sims) + "_no_MSE_joblib.png")

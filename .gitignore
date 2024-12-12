@@ -3,5 +3,10 @@ outputs/*
 sbi-logs/
 pairplot_*
 __pycache__/
-ray_cluster/venv/
+sbi_env/venv/
+sbi_env/python
 .ipynb_checkpoints/
+*.png
+notebooks/sbi-logs
+notebooks/.ipynb_checkpoints
+notebooks/logs
