@@ -1,5 +1,7 @@
 # :high_brightness: Simulation-Based Inference for Computational Biology: Integrating AI, Bayesian Modeling, and HPC
 ## Tutorial IP2 - ISCB-AFRICA ASBCB Conference on Bioinformatics
+![](https://www.iscb.org/images/stories/africa2025/banner.ConferenceBanner.Africa.2025.png)
+
 ### Organizers
 [Alina Bazarova](https://www.fz-juelich.de/profile/bazarova_al), [Jose Robledo](https://www.fz-juelich.de/profile/robledo_j), and [Stefan Kesselheim](https://www.google.com/search?client=ubuntu-sn&channel=fs&q=stefan+Kesselheim)
 
