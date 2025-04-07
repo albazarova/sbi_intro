@@ -3,20 +3,16 @@
 #SBATCH --nodes=2
 #SBATCH --ntasks-per-node=1
 #SBATCH --cpus-per-task=40
-#SBATCH --time=00:30:00
+#SBATCH --time=00:40:00
 #SBATCH --partition=develgpus
-#SBATCH --gres=gpu:4
+#SBATCH --gres=gpu:1
 #SBATCH --output=outputs/%j.out
 #SBATCH --error=outputs/%j.err
 
 export NCCL_SOCKET_IFNAME="ib0"
 export SRUN_CPUS_PER_TASK="$SLURM_CPUS_PER_TASK"
 
-# --- Note:
-# Remember to run setup.sh in the ray_cluster folder once before this file.  
-# It will generate the environment that will be acticvated with the following line.
-# ---
-source ../sbi_env/activate.sh
+source /p/project1/training2506/sbi_env/activate.sh
 
 export OMP_NUM_THREADS=1
 export OPENBLAS_NUM_THREADS=1
