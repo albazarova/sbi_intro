@@ -1,9 +1,9 @@
 #!/bin/bash
-#SBATCH --account=YOUR_ACCOUNT
+#SBATCH --account=training2506
 #SBATCH --nodes=2
 #SBATCH --ntasks-per-node=1
-#SBATCH --cpus-per-task=40
-#SBATCH --time=00:40:00
+#SBATCH --cpus-per-task=128
+#SBATCH --time=00:30:00
 #SBATCH --partition=develgpus
 #SBATCH --gres=gpu:1
 #SBATCH --output=outputs/%j.out
@@ -14,9 +14,10 @@ export SRUN_CPUS_PER_TASK="$SLURM_CPUS_PER_TASK"
 
 source /p/project1/training2506/sbi_env/activate.sh
 
-export OMP_NUM_THREADS=1
-export OPENBLAS_NUM_THREADS=1
-export SLURM_GPUS_PER_TASK=4
+#export OMP_NUM_THREADS=1
+#export OPENBLAS_NUM_THREADS=1
+#export SLURM_GPUS_PER_TASK=1
+NUMEXPR_MAX_THREAD=256
 
 nodes=$(scontrol show hostnames "$SLURM_JOB_NODELIST")
 nodes_array=($nodes)
@@ -63,5 +64,5 @@ for ((i = 1; i <= worker_num; i++)); do
     sleep 20
 done
 
-python -u pyross_example_script.py
+python pyross_example_script.py
 echo -e "\nFinished"

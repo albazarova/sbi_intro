@@ -1,6 +1,7 @@
 from enum import Enum
 from pathlib import Path
 from typing import List
+import os
 
 import matplotlib.pyplot as plt
 import numpy as np
@@ -215,11 +216,14 @@ prior = utils.BoxUniform(
 
 num_sims = 50000
 
-
 y_truth = np.asarray(casedata.data["cases_all_germany_ma7"].Confirmed)[:71]
 
+num_cpus = os.cpu_count()
+workers = num_cpus - 1
+print(f"Found {num_cpus} cores. Will use {workers}.")
+
 theta, x = simulate_for_sbi(
-    simulator2, prior, num_sims, num_workers=-1, simulation_batch_size=200, ray_on=True
+    simulator2, prior, num_sims, num_workers=workers, simulation_batch_size=200, ray_on=True
 )
 
 
