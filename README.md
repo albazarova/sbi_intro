@@ -25,6 +25,111 @@ You may find the tutorial notebooks in the [notebooks](./notebooks) folder.
 - Learn how to design and implement SBI frameworks for representative biological scenarios, such as molecular dynamics, cell growth, count data modeling, and Lotka-Volterra systems.
 - Leverage HPC for SBI Workflows: understand how to use high-performance computing (HPC) environments to scale SBI workflows and efficiently distribute computational workloads.
 
+### Course schedule
+
+Course schedule:
+ 
+**9.00 – 9.30** Introduction, tutorial overview, onboarding to HPC system
+            
+Teaching content
+- Overview of the tutorial
+- Conveying the learning objectives
+- Onboarding participants to JUSUF HPC System
+
+Learning Goals
+- Welcoming of the participants
+- Introduction to the system
+ 
+**9.30 – 10.00** Lecture: Basic concepts of classical Bayesian inference
+            
+Teaching content
+- Key features of Bayesian Inference
+- Bayes rule
+- Concepts of posterior and prior distributions
+- Issues emerging when performing classical Bayesian Inference
+- Real life examples
+- A typical SBI pipeline
+- Key SBI methods and algorithmic discussion of those          
+
+Learning Goals
+- Getting insights into the theory behind Bayesian inference
+- Understanding the benefits of Bayesian inference through examples
+- Understanding the benefits of SBI over the classical Bayesian inference
+- Understanding the difference between SBI methods
+                                                                        
+                        
+**10.00-10.15** Hands-on: Converting classical Bayesian example into an SBI one, Jupyter notebook
+ 
+Teaching content
+- Using previously introduced example to write the first SBI pipeline
+- Compare different SBI methods on the same example
+  
+Learning goals
+- Logging into the HPC systems and activating the necessary environment
+- Getting a feel of the prior and posterior distribution concepts 
+- Set up the simplest one-liner interface of the SBI
+- Understand the difference in the inference and running times between the SBI methods
+ 
+**10.15 - 10.45** Hands-on: Data example. MCMC vs SBI, Jupyter notebook
+ 
+Teaching content
+- Using a data example to run classical MCMC algorithm to get parameter     estimates
+- Put the example into the SBI framework
+
+Learning Goals
+- Learn to adapt a more complex example to SBI framework
+- Evaluate the differences between SBI and classical Bayesian inference
+ 
+**10.45 - 11.00** Coffee-break
+ 
+**11.00 - 11.15** Lecture: Deep Learning component and Sequential estimation
+ 
+Teaching content
+- Estimation through normalizing flows: advantages and disadvantages
+- Estimation through a Neural Network classifier: parallels with MCMC
+- Concepts of Sequential Estimation
+  
+Learning Goals
+- Understand the machinery behind SBI
+- Consider potential benefits of the sequential estimation
+            
+**11.15 – 11.45** Hands-on: Flexible interface of the sbi package, Jupyter notebook 
+            
+Teaching content
+- Utilise previously used data example to illustrate flexible interface of the SBI package
+- Customise neural network within the SBI machinery
+- Perform sequential inference on the same data example
+
+Learning Goals
+- Work with SBI to a higher level of granularity
+- See the difference between amortized and sequential SBI inference
+ 
+**11.45 – 12.20** Hands-on: Parallelization and distributing SBI over multiple nodes
+            
+Teaching content
+- Parallelise the simulations when using one node only
+- Distribute the simulations over multiple nodes by means of Ray backend
+- Use appropriate SLURM script for the corresponding batch job submission
+
+Learning goals
+- Scale up the simulations in order to reduce the running time
+ 
+**12.20 – 13.00** Hands-on: Constructing summary statistics
+            
+Teaching content
+- Introduction to a 1D molecular dynamics simulator example
+- Extract summary statistic from the model
+- Compare the outputs given different parameters of the summary statistic
+- Evaluate the results
+- Introduction to an agent based simulator for tumor cell growth (optional)
+
+Learning goals
+- Learn summary statistics from images by means of CNNs (optional)
+- Craft summary statistics based on domain knowledge
+- Consider neural networks to learn new summary statistics
+- Familiarize with different types of summary statistics and their impact on the inference
+- Familiarize with the flexible SBI interface
+ 
 
 ### Useful links
 
