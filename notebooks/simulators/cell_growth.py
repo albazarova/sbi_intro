@@ -103,22 +103,10 @@ def simulator(pvec, sim_type="observables"):
         print("Error:\n", result.stderr)
         return torch.tensor(None)
 
-
-class FlexibleBoxUniform(BoxUniform):
-    def __init__(self, low, high):
-        self.low = low
-        self.high = high
-        self.device = None
-
-    def to(self, device):
-        self.device = device
-        super().__init__(low=self.low, high=self.high, device=self.device)
-
-
 def initialize_sbi(args):
     # example for:
     # theta -> (cycle_duration_tumor, mean_velocity_tumor, cycle_duration_normal, mean_velocity_normal)
-    prior = FlexibleBoxUniform(
+    prior = BoxUniform(
         low=torch.tensor([7, 0.12, 12, 0.12]), high=torch.tensor([20, 0.83, 30, 0.83])
     )
     prior.to("cpu")
