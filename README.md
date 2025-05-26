@@ -3,7 +3,7 @@
 ![](data/banner.png)
 
 ### Organizers
-[Alina Bazarova](https://www.fz-juelich.de/profile/bazarova_al), [Jose Robledo](https://www.fz-juelich.de/profile/robledo_j), and [Stefan Kesselheim](https://www.google.com/search?client=ubuntu-sn&channel=fs&q=stefan+Kesselheim)
+[Alina Bazarova](https://www.fz-juelich.de/profile/bazarova_al), [Jose Robledo](https://www.fz-juelich.de/profile/robledo_j)
 
 ### Information
 
@@ -35,64 +35,64 @@ You may find the tutorial notebooks in the [notebooks](./notebooks) folder.
 
 Teaching content
 
-    Overview of the tutorial
-    Conveying the learning objectives
-    Onboarding participants to JUWELS Booster HPC System
+   - Overview of the tutorial
+   - Conveying the learning objectives
+   - Onboarding participants to JUWELS Booster HPC System
 
 Learning Goals
 
-    Welcoming of the participants
-    Introduction to the system
+   - Welcoming of the participants
+   - Introduction to the system
 
 **10.50 – 11.10** Lecture: Basic concepts of classical Bayesian inference
 
 Teaching content
 
-    Key features of Bayesian Inference
-    Bayes rule
-    Concepts of posterior and prior distributions
-    Issues emerging when performing classical Bayesian Inference
-    Real life examples
+   - Key features of Bayesian Inference
+   - Bayes rule
+   - Concepts of posterior and prior distributions
+   - Issues emerging when performing classical Bayesian Inference
+   - Real life examples
 
 Learning Goals
 
-    Getting insights into the theory behind Bayesian inference
-    Understanding the benefits of Bayesian inference through examples
+   - Getting insights into the theory behind Bayesian inference
+   - Understanding the benefits of Bayesian inference through examples
 
 **11.10 – 11.25** Hands-on: Warm-up example in a Jupyter notebook
 
 Teaching content
 
-    A simple coin-flipping example implemented within Jupyter notebook
+   – A simple coin-flipping example implemented within Jupyter notebook
 
 Learning Goals
 
-    Logging into the HPC systems and activating the necessary environment
-    Getting a feel of the prior and posterior distribution concepts
+   - Logging into the HPC systems and activating the necessary environment
+   - Getting a feel of the prior and posterior distribution concepts
 
 **11.25 - 11.40** Lecture: Basic concepts of Simulation Based Inference
 
 Teaching content
 
-    A typical SBI pipeline
-    Key SBI methods and algorithmic discussion of those
+   - A typical SBI pipeline
+   - Key SBI methods and algorithmic discussion of those
 
 Learning Goals
 
-    Understanding the benefits of SBI over the classical Bayesian inference
-    Understanding the difference between SBI methods
+   - Understanding the benefits of SBI over the classical Bayesian inference
+   - Understanding the difference between SBI methods
 
 **11.40-12.00** Hands-on: Converting classical Bayesian example into an SBI one, Jupyter notebook
 
 Teaching content
 
-    Using previously introduced example to write the first SBI pipeline
-    Compare different SBI methods on the same example
+   - Using previously introduced example to write the first SBI pipeline
+   - Compare different SBI methods on the same example
 
 Learning goals
 
-    Set up the simplest one-liner interface of the SBI
-    Understand the difference in the inference and running times between the SBI methods
+   - Set up the simplest one-liner interface of the SBI
+   - Understand the difference in the inference and running times between the SBI methods
 
 **12.00-13.00 Lunch break**
 
@@ -100,39 +100,39 @@ Learning goals
 
 Teaching content
 
-    Estimation through normalizing flows: advantages and disadvantages
-    Estimation through a Neural Network classifier: parallels with MCMC
-    Concepts of Sequential Estimation
+   - Estimation through normalizing flows: advantages and disadvantages
+   - Estimation through a Neural Network classifier: parallels with MCMC
+   - Concepts of Sequential Estimation
 
 Learning Goals
 
-    Understand the machinery behind SBI
-    Consider potential benefits of the sequential estimation
+   - Understand the machinery behind SBI
+   - Consider potential benefits of the sequential estimation
 
 **13.15 – 13.45** Hands-on: Flexible interface of the sbi package, Jupyter notebook
 
 Teaching content
 
-    Utilise previously used data example to illustrate flexible interface of the SBI package
-    Customise neural network within the SBI machinery
-    Perform sequential inference on the same data example
+   - Utilise previously used data example to illustrate flexible interface of the SBI package
+   - Customise neural network within the SBI machinery
+   - Perform sequential inference on the same data example
 
 Learning Goals
 
-    Work with SBI to a higher level of granularity
-    See the difference between amortized and sequential SBI inference
+   - Work with SBI to a higher level of granularity
+   - See the difference between amortized and sequential SBI inference
 
 **13.45 – 14.30** Hands-on: Parallelization and distributing SBI over multiple nodes
 
 Teaching content
 
-    Parallelise the simulations when using one node only
-    Distribute the simulations over multiple nodes by means of Ray backend
-    Use appropriate SLURM script for the corresponding batch job submission
+   - Parallelise the simulations when using one node only
+   - Distribute the simulations over multiple nodes by means of Ray backend
+   - Use appropriate SLURM script for the corresponding batch job submission
 
 Learning goals
 
-    Scale up the simulations in order to reduce the running time
+   - Scale up the simulations in order to reduce the running time
 
 ### Useful links
 
