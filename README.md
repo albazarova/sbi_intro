@@ -1,5 +1,5 @@
-# :high_brightness: Simulation-Based Inference for Computational Biology: Integrating AI, Bayesian Modeling, and HPC
-## Tutorial: Introduction to Simulation Based Inference: enhancing synthetic models with Artificial Intelligence 
+# :high_brightness: Introduction to Simulation Based Inference: enhancing synthetic models with Artificial Intelligence
+## Tutorial at HAICON 2025 prologue day
 ![](data/banner.png)
 
 ### Organizers
