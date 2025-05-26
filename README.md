@@ -1,5 +1,5 @@
 # :high_brightness: Simulation-Based Inference for Computational Biology: Integrating AI, Bayesian Modeling, and HPC
-## Tutorial IP2 - ISCB-AFRICA ASBCB Conference on Bioinformatics
+## Tutorial: Introduction to Simulation Based Inference: enhancing synthetic models with Artificial Intelligence 
 ![](data/banner.png)
 
 ### Organizers
@@ -7,14 +7,18 @@
 
 ### Information
 
-- **Date**: June 1st, 2025, 10:00-13:00
+- **Date**: June 1st, 2025, 10:30-14:00
 - **Place**: Karlsruhe, Germany (in-person event)
-- [Link to tutorial](https://www.iscb.org/africa2025/programme-agenda/tutorials#ip2) on the ISCB-AFRICA ASBCB Conference on Bioinformatics Homepage.
+- [Link to Unconference page](https://haicon.cc/prologue-unconference/), and to [full description](https://github.com/Helmholtz-AI-Energy/HAICON25-Prologue-Day/issues/8).
 
 ### Description
-This tutorial introduces Simulation-Based Inference (SBI), a framework combining Bayesian modeling, AI techniques, and high-performance computing (HPC) to address key challenges in computational biology, such as performing reliable inference with limited data by using AI-based approximate Bayesian computation. Moreover, it tackles the problem of intractable likelihood functions, thereby allowing to utilize Bayesian inference for biological systems with multiple sources of stochasticity. The tutorial also demonstrates how to leverage HPC environments to drastically reduce inference runtimes, making it highly relevant for large-scale biological problems. This tutorial bridges theoretical foundations with hands-on applications in computational biology.
+In the world of the research fields drifting further apart from one another and Artificial Intelligence (AI) tools gaining increasingly more attention, methods which can bring a number of seemingly disjoint fields together is of the utmost importance. The proposed tutorial is sought to provide researchers with an instrument to unify Bayesian modelling, large-scale simulations, and AI methods while integrating them into the HPC environment.
 
-Participants will learn to implement SBI frameworks using diverse biological models, such as molecular dynamics simulations, agent-based tumor growth models, count data modeling, and Lotka-Volterra systems. Practical exercises in Jupyter notebooks guide attendees through SBI workflows, from simple coin-flipping examples to more complex biological simulations, ensuring accessibility for participants with varied backgrounds. The tutorial’s inclusion of cutting-edge methods like Sequential Neural Posterior Estimation and its emphasis on parallelization and HPC scalability align closely with the scientific community's focus on innovation in computational biology. A previous iteration of the tutorial at the Helmholtz AI Conference 2024 received excellent reviews and led to interdisciplinary discussions, highlighting its broad applicability and impact. For this conference, the content has been further refined with additional examples relevant to the community, ensuring it meets the needs of bioinformatics researchers.
+While Bayesian inference is widely used in the research community, as it provides distributional estimates of model parameters and allows to update the model by incorporating new data into it, it often suffers from computationally intensive processes and limited parallelization capabilities. Simulation Based Inference (SBI) is a tool to tackle this issue.
+
+SBI employs AI-based approximate Bayesian computation to dramatically reduce inference times and generate reliable estimates, even when observed data are sparse. This approach enables any representative simulation model to inform parameter constraints, yielding approximate posterior distributions. Additionally, SBI facilitates workload distribution across high-performance computing clusters, further reducing runtime.
+
+This tutorial discusses theoretical foundations and provides practical training for constructing SBI frameworks tailored to specific models. Through provided examples, participants will gain insight into various levels of model granularity, ranging from a simple black box approach to a highly customizable design, and develop the skills to effectively manage HPC devices within a given set-up. By participating in this tutorial, attendees will gain an understanding of the principles of Simulation Based Inference, learn how to apply this methodology in the context of HPC in a variety of case scenarios, to evaluate its potential and utility, and be encouraged to consider its applicability to their own research projects.
 
 You may find the tutorial notebooks in the [notebooks](./notebooks) folder.
 
@@ -27,8 +31,108 @@ You may find the tutorial notebooks in the [notebooks](./notebooks) folder.
 
 ### Course schedule
 
-Course schedule:
- 
+**10.30 – 10.50** Introduction, tutorial overview, onboarding to HPC system
+
+Teaching content
+
+    Overview of the tutorial
+    Conveying the learning objectives
+    Onboarding participants to JUWELS Booster HPC System
+
+Learning Goals
+
+    Welcoming of the participants
+    Introduction to the system
+
+**10.50 – 11.10** Lecture: Basic concepts of classical Bayesian inference
+
+Teaching content
+
+    Key features of Bayesian Inference
+    Bayes rule
+    Concepts of posterior and prior distributions
+    Issues emerging when performing classical Bayesian Inference
+    Real life examples
+
+Learning Goals
+
+    Getting insights into the theory behind Bayesian inference
+    Understanding the benefits of Bayesian inference through examples
+
+**11.10 – 11.25** Hands-on: Warm-up example in a Jupyter notebook
+
+Teaching content
+
+    A simple coin-flipping example implemented within Jupyter notebook
+
+Learning Goals
+
+    Logging into the HPC systems and activating the necessary environment
+    Getting a feel of the prior and posterior distribution concepts
+
+**11.25 - 11.40** Lecture: Basic concepts of Simulation Based Inference
+
+Teaching content
+
+    A typical SBI pipeline
+    Key SBI methods and algorithmic discussion of those
+
+Learning Goals
+
+    Understanding the benefits of SBI over the classical Bayesian inference
+    Understanding the difference between SBI methods
+
+**11.40-12.00** Hands-on: Converting classical Bayesian example into an SBI one, Jupyter notebook
+
+Teaching content
+
+    Using previously introduced example to write the first SBI pipeline
+    Compare different SBI methods on the same example
+
+Learning goals
+
+    Set up the simplest one-liner interface of the SBI
+    Understand the difference in the inference and running times between the SBI methods
+
+**12.00-13.00 Lunch break**
+
+**13.00 - 13.15** Lecture: Deep Learning component and Sequential estimation
+
+Teaching content
+
+    Estimation through normalizing flows: advantages and disadvantages
+    Estimation through a Neural Network classifier: parallels with MCMC
+    Concepts of Sequential Estimation
+
+Learning Goals
+
+    Understand the machinery behind SBI
+    Consider potential benefits of the sequential estimation
+
+**13.15 – 13.45** Hands-on: Flexible interface of the sbi package, Jupyter notebook
+
+Teaching content
+
+    Utilise previously used data example to illustrate flexible interface of the SBI package
+    Customise neural network within the SBI machinery
+    Perform sequential inference on the same data example
+
+Learning Goals
+
+    Work with SBI to a higher level of granularity
+    See the difference between amortized and sequential SBI inference
+
+**13.45 – 14.30** Hands-on: Parallelization and distributing SBI over multiple nodes
+
+Teaching content
+
+    Parallelise the simulations when using one node only
+    Distribute the simulations over multiple nodes by means of Ray backend
+    Use appropriate SLURM script for the corresponding batch job submission
+
+Learning goals
+
+    Scale up the simulations in order to reduce the running time
 
 ### Useful links
 
