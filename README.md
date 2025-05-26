@@ -7,7 +7,7 @@
 
 ### Information
 
-- **Date**: June 1st, 2025, 10:30-14:00
+- **Date**: June 2, 2025, 10:30-14:00
 - **Place**: Karlsruhe, Germany (in-person event)
 - [Link to Unconference page](https://haicon.cc/prologue-unconference/), and to [full description](https://github.com/Helmholtz-AI-Energy/HAICON25-Prologue-Day/issues/8).
 
