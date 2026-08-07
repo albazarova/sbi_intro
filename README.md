@@ -45,6 +45,7 @@ You may find the tutorial notebooks in the [notebooks](./notebooks) folder.
 
 4. Likelihood-free MCMC with Amortized Approximate Likelihood Ratios, Joeri Hermans, Volodimir Begy, Gilles Louppe Proceedings of the 37th International Conference on Machine Learning - [Link to paper :newspaper:](http://proceedings.mlr.press/v119/hermans20a.html)
 
+5. Simulation-Based Inference: A Practical Guide, Michael Deistler, Jan Boelts, Peter Steinbach, Guy Moss, Thomas Moreau, Manuel Gloeckler, Pedro L. C. Rodrigues, Julia Linhart, Janne K. Lappalainen, Benjamin Kurt Miller, Pedro J. Gonçalves, Jan-Matthis Lueckmann, Cornelius Schröder, Jakob H. Macke, 2025 - [Link to paper](https://arxiv.org/abs/2508.12939)
 
 
 
