@@ -10,3 +10,8 @@ sbi_env/python
 notebooks/sbi-logs
 notebooks/.ipynb_checkpoints
 notebooks/logs
+*out
+*err
+*sbi-logs*
+*results*
+
