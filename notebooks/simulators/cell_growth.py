@@ -5,6 +5,7 @@ import pickle
 from PIL import Image
 import argparse
 import os
+import secrets
 
 from sbi.utils import BoxUniform
 from sbi.utils.sbiutils import seed_all_backends
@@ -35,12 +36,13 @@ def parse_arguments():
     return args
 
 
-def simulator(pvec, sim_type="observables"):
+def simulator(pvec, sim_type="observables", seed=None):
     """
     The simulator TwoCell has 16 inputs.
     pvec can be any combination of the parameters listed.
     pvec : torch.tensor, np.array, list
     sim_type: one of ["observables", "image", "both"]
+    seed: optional integer seed; use None for an independent random seed
     """
 
     if type(pvec) == torch.Tensor:
@@ -48,7 +50,11 @@ def simulator(pvec, sim_type="observables"):
 
     params = {"general": {}, "tumor": {}, "normal": {}}
 
-    params["general"]["random_seed"] = 23
+    # Use independent simulator randomness by default. Passing an explicit seed
+    # is useful when different output representations must describe the same run.
+    params["general"]["random_seed"] = (
+        secrets.randbelow(2**31 - 1) if seed is None else int(seed)
+    )
     params["general"]["grid_constant"] = 5
     params["general"]["radius_volume"] = 160
     params["general"]["simulation_duration"] = 100
@@ -108,8 +114,7 @@ def simulator(pvec, sim_type="observables"):
             print("Sim type unkown. exiting")
             exit()
     else:
-        print("Error:\n", result.stderr)
-        return torch.tensor(None)
+        raise RuntimeError(f"TwoCell simulator failed:\n{result.stderr}")
 
 def initialize_sbi(args):
     # example for:
