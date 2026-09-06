@@ -5,6 +5,7 @@ import pickle
 from PIL import Image
 import argparse
 import os
+import secrets
 
 from sbi.utils import BoxUniform
 from sbi.utils.sbiutils import seed_all_backends
@@ -35,12 +36,13 @@ def parse_arguments():
     return args
 
 
-def simulator(pvec, sim_type="observables"):
+def simulator(pvec, sim_type="observables", seed=None):
     """
     The simulator TwoCell has 16 inputs.
     pvec can be any combination of the parameters listed.
     pvec : torch.tensor, np.array, list
     sim_type: one of ["observables", "image", "both"]
+    seed: optional integer seed; use None for an independent random seed
     """
 
     if type(pvec) == torch.Tensor:
@@ -48,7 +50,11 @@ def simulator(pvec, sim_type="observables"):
 
     params = {"general": {}, "tumor": {}, "normal": {}}
 
-    params["general"]["random_seed"] = 23
+    # Use independent simulator randomness by default. Passing an explicit seed
+    # is useful when different output representations must describe the same run.
+    params["general"]["random_seed"] = (
+        secrets.randbelow(2**31 - 1) if seed is None else int(seed)
+    )
     params["general"]["grid_constant"] = 5
     params["general"]["radius_volume"] = 160
     params["general"]["simulation_duration"] = 100
@@ -85,14 +91,22 @@ def simulator(pvec, sim_type="observables"):
             num_cells = np.fromstring(num_cells, sep=" ")  # (2,)
         if sim_type in ["image", "both"]:
             # Last image
-            array = np.fromstring(array, sep=" ").reshape(65, 65, 3)
+            # The executable emits RGB intensities on the 0--255 scale. Convert
+            # once at the simulator boundary so plotting and neural-network
+            # training consistently receive float32 values in [0, 1].
+            array = (
+                np.fromstring(array, sep=" ")
+                .reshape(65, 65, 3)
+                .astype(np.float32)
+                / 255.0
+            )
 
         if sim_type == "observables":
             return torch.tensor(
                 np.concatenate([mean_pos, radius_conf, num_cells], axis=0)
             )
         elif sim_type == "image":
-            return torch.tensor(array)
+            return torch.from_numpy(array)
             # return im.resize((600,600), Image.NEAREST)
         elif sim_type == "both":
             return [array, (mean_pos, radius_conf, num_cells)]
@@ -100,8 +114,7 @@ def simulator(pvec, sim_type="observables"):
             print("Sim type unkown. exiting")
             exit()
     else:
-        print("Error:\n", result.stderr)
-        return torch.tensor(None)
+        raise RuntimeError(f"TwoCell simulator failed:\n{result.stderr}")
 
 def initialize_sbi(args):
     # example for:
