@@ -85,14 +85,22 @@ def simulator(pvec, sim_type="observables"):
             num_cells = np.fromstring(num_cells, sep=" ")  # (2,)
         if sim_type in ["image", "both"]:
             # Last image
-            array = np.fromstring(array, sep=" ").reshape(65, 65, 3)
+            # The executable emits RGB intensities on the 0--255 scale. Convert
+            # once at the simulator boundary so plotting and neural-network
+            # training consistently receive float32 values in [0, 1].
+            array = (
+                np.fromstring(array, sep=" ")
+                .reshape(65, 65, 3)
+                .astype(np.float32)
+                / 255.0
+            )
 
         if sim_type == "observables":
             return torch.tensor(
                 np.concatenate([mean_pos, radius_conf, num_cells], axis=0)
             )
         elif sim_type == "image":
-            return torch.tensor(array)
+            return torch.from_numpy(array)
             # return im.resize((600,600), Image.NEAREST)
         elif sim_type == "both":
             return [array, (mean_pos, radius_conf, num_cells)]
